@@ -8,6 +8,10 @@
     "build": "npm run build --prefix client",
     "start": "npm run start --prefix server"
   },
+  "workspaces": [
+    "server",
+    "client"
+  ],
   "devDependencies": {
     "concurrently": "^9.1.2"
   }
