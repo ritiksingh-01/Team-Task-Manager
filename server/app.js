@@ -13,7 +13,25 @@ const app = express();
 app.use(helmet());
 app.use(
   cors({
-    origin: process.env.CLIENT_URL || '*',
+    origin: function (origin, callback) {
+      const clientUrl = process.env.CLIENT_URL || '*';
+      const allowedOrigins = clientUrl.split(',').map(url => url.trim());
+      
+      // Allow requests with no origin (like mobile apps or curl requests)
+      if (!origin) return callback(null, true);
+      
+      // Allow if origin is in the allowed list or if '*' is allowed
+      if (allowedOrigins.includes('*') || allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      }
+
+      // Allow any Vercel deployments (including previews)
+      if (origin.endsWith('.vercel.app')) {
+        return callback(null, true);
+      }
+
+      return callback(new Error('Not allowed by CORS'));
+    },
     credentials: true
   })
 );
