@@ -1,6 +1,5 @@
 # Team Task Manager
 
-![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![React](https://img.shields.io/badge/frontend-React-61DAFB?logo=react&logoColor=black)
 ![Node.js](https://img.shields.io/badge/backend-Node.js-339933?logo=nodedotjs&logoColor=white)
 ![MongoDB](https://img.shields.io/badge/database-MongoDB-47A248?logo=mongodb&logoColor=white)
@@ -62,7 +61,7 @@ server/                 # Node.js backend
 
 1. Install all dependencies:
    ```bash
-   npm run install:all
+   npm install
    ```
 
 2. Set up backend environment variables in `server/.env`:
@@ -101,8 +100,7 @@ server/                 # Node.js backend
 
 ## Live Demo
 
-- **Live URL:** [Add link here]
-- **Demo Video:** [Add link here]
+- **Live URL:** [Team Task Manager Live Demo](https://team-task-manager-green-sigma.vercel.app/auth)
 
 ## License
 
