@@ -2,41 +2,75 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  margin: 0;
-  min-width: 320px;
-  background: #f4f7fb;
-  color: #172033;
-  font-family:
-    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+@layer base {
+  body {
+    @apply bg-background text-textMain antialiased font-sans;
+  }
 }
 
-input,
-select,
-textarea {
-  outline: none;
+@layer components {
+  .field {
+    @apply w-full rounded-lg border border-border bg-white px-4 py-2.5 text-sm text-textMain shadow-sm transition-all duration-200 placeholder-slate-400 focus:border-primary-500 focus:ring-4 focus:ring-primary-500/20 focus:outline-none;
+  }
+
+  .label {
+    @apply mb-1.5 block text-sm font-semibold text-textMain tracking-tight;
+  }
+
+  .button {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-sm font-semibold shadow-sm transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60;
+  }
+
+  .button-primary {
+    @apply button bg-primary-600 text-white shadow-md shadow-primary-600/20 hover:bg-primary-700 hover:shadow-lg hover:-translate-y-0.5 focus:ring-primary-600;
+  }
+
+  .button-secondary {
+    @apply button border border-border bg-white text-textMain hover:bg-surfaceHover focus:ring-border;
+  }
+
+  .button-ghost {
+    @apply button bg-transparent text-textMuted shadow-none hover:bg-surfaceHover hover:text-textMain;
+  }
+
+  .panel {
+    @apply rounded-xl border border-border bg-surface shadow-card transition-all duration-200 hover:shadow-card-hover;
+  }
+
+  /* Material Symbol Utility */
+  .icon {
+    font-family: 'Material Symbols Outlined';
+    font-weight: normal;
+    font-style: normal;
+    display: inline-block;
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    direction: ltr;
+    font-variation-settings:
+      'FILL' 0,
+      'wght' 400,
+      'GRAD' 0,
+      'opsz' 24;
+  }
 }
 
-.field {
-  @apply w-full rounded-md border border-line bg-white px-3 py-2 text-sm text-ink shadow-sm transition focus:border-brand focus:ring-2 focus:ring-blue-100;
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
 }
 
-.label {
-  @apply mb-1 block text-sm font-medium text-slate-700;
+::-webkit-scrollbar-track {
+  background: transparent;
 }
 
-.button {
-  @apply inline-flex items-center justify-center rounded-md px-4 py-2 text-sm font-semibold shadow-sm transition disabled:cursor-not-allowed disabled:opacity-60;
+::-webkit-scrollbar-thumb {
+  @apply bg-slate-300 rounded-full border-2 border-solid border-transparent bg-clip-padding;
 }
 
-.button-primary {
-  @apply button bg-brand text-white hover:bg-blue-700;
-}
-
-.button-secondary {
-  @apply button border border-line bg-white text-slate-700 hover:bg-slate-50;
-}
-
-.panel {
-  @apply rounded-lg border border-line bg-white shadow-sm;
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-slate-400;
 }
